@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste com imagens</title>
+    <style>
+        img{
+            width: 20rem;
+           
+        }
+    </style>
+</head>
+<body>
+    <h1>Testando cargas e imagens</h1>
+    <p>Abaixo você vai ver uma imagem da mesma pasta</p><br>
+    <img src="html-5.png" alt="Logo HTML">
+    <p>Podemos também carregar imagens que estão em sub-pastas</p><br>
+    <img src="img/css-3.png" alt="Logo CSS">
+    <p>Também podemos carregar imagens de pastas externas externas</p>
+    <img src="/img/JavaScript-Logo.png" alt="Logo JS">
+</body>
+</html>
