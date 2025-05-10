@@ -1,1 +1,17 @@
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatação de textos</title>
+</head>
+<body>
+    <h1>Principais formatações</h1>
+    <h2>Negrito / Destaque</h2>
+    <p>Nessa frase temos um <b>trecho em negrito</b> utilizando a tag B (não semântica).</p>
+    <p>Nessa frase temos um <strong>trecho em destaque</strong> utilizando a tag STRONG (semântica). </p>
+    <h2>Itálico / Ênfase</h2>
+    <p>Nessa frase temos um <i>trecho em itálico</i> utilizando a tag I (não semântica).</p>
+    <p>Nessa frase temos um <em>trecho com ênfase</em> utilizando a tag EM (semântica).</p>
+</body>
+</html>
