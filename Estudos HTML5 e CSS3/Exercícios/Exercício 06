@@ -13,5 +13,16 @@
     <h2>Itálico / Ênfase</h2>
     <p>Nessa frase temos um <i>trecho em itálico</i> utilizando a tag I (não semântica).</p>
     <p>Nessa frase temos um <em>trecho com ênfase</em> utilizando a tag EM (semântica).</p>
+    <h2>Texto marcado</h2>
+    <p>Podemos criar também <mark style="background-color:lime;">um texto marcado</mark> usando a tag MARK.</p>
+    <h2>Textos grandes e pequenos</h2>
+    <p>Nessa frase temos um <big>trecho um pouco maior</big> utilizando a tag BIG (não semêntica e obsoleta).</p>
+    <p>Nessa frase temos um <small>trecho um pouco menor</small> utilizando a tag SMALL (semântica).</p>
+    <h2>Textos deletados e inseridos</h2>
+    <p>Nessa frase temos um <del>trecho que foi excluído</del>, ou seja deve ser lido mas não considerado, utilizando a tag DEL.</p>
+    <p>Nessa frase temos um <ins>trecho que foi adicionado</ins> utilizando a tag INS (semântica).</p>
+    <h2>Textos sobrescristos e subscritos</h2>
+    <p>Nessa frase temos um trecho sobrescrito "x<SUP>2</SUP> + 10  = 35" utilizando a tag SUP.</p>
+    <p>Nessa frase temos um trecho subscrito "H<sub>2</sub>O" utilizando a tag SUB.</p>
 </body>
 </html>
