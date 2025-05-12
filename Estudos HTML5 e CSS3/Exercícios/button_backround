@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu documento em JS</title>
+    <style>
+        h1{
+            display: flex;
+            justify-content: center;
+            margin: 100px;
+        }
+        div .red{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            margin-top: 200px;
+            padding: 15px 80px;
+            border: none;
+            border-radius: 10px;
+            transition: background 0.45s;
+            
+        }
+        div .green{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            margin-top: 20px;
+            padding: 15px 93px;
+            border: none;
+            border-radius: 10px;
+            transition: background 0.45s;
+
+        }
+        div .blue{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            margin-top: 20px;
+            padding: 15px 98px;
+            border: none;
+            border-radius: 10px;
+            transition: background 0.45s;
+
+        }
+        div .yellow{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            margin-top: 20px;
+            padding: 15px 85px;
+            border: none;
+            border-radius: 10px;
+            transition: background 0.45s;
+
+        }
+        div .white{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            margin-top: 20px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            transition: background 0.45s;
+
+        }
+
+            
+        .red:hover {
+            background-color: #e95858;
+        }
+        .green:hover {
+            background-color: #479d5e;
+        }
+        .blue:hover {
+            background-color: #5e83ba;
+        }
+        .yellow:hover {
+            background-color: #efd269;
+        }
+        .white:hover {
+            background-color: #535353;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Botões para mudar a cor de fundo</h1>
+    <div>
+        <button onclick="red()" class="red">Vermelho</button>
+        <button onclick="green()" class="green">Verde</button>
+        <button onclick="blue()" class="blue">Azul</button>
+        <button onclick="yellow()" class="yellow">Amarelo</button>
+        <button onclick="voltar()" class="white">Voltar</button>
+    </div>
+    <script>
+        function red(){
+            document.body.style.background = "red"
+        }
+        function green(){
+            document.body.style.background = "green"
+        }
+        function blue(){
+            document.body.style.background = "blue"
+        }
+        function yellow(){
+            document.body.style.background = "yellow"
+        }
+        function voltar(){
+            document.body.style.background = "white"
+        }
+
+    </script>
+</body>
+</html>
