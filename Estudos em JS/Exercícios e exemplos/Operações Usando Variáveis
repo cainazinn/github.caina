@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo JS</title>
+    <style>
+        body{
+            background-color: bisque;
+            color: #3e6b3f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá Mundo</h1>
+    <h3>Este é meu programa</h3>
+    <script>
+        var n1 = Number(prompt("Informe o primeiro número:"))
+        var n2 = Number(prompt("Informe o segundo número:"))
+        var soma = n1 + n2
+
+        document.write(`A soma dos números <strong>${n1}</strong> e <strong>${n2}</strong> é igual a <strong>${soma}</strong>. Se esse resultado fosse um preço em reais ficaria <strong>${soma.toLocaleString("pt-br", {style:"currency", currency: "BRL"})}</strong>.`)
+    </script>
+</body>
+</html>
