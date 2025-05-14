@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo JS</title>
+    <style>
+        body{
+            background-color: bisque;
+            color: #3e6b3f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá Mundo</h1>
+    <h3>Este é meu programa</h3>
+    <script>
+        var nome = prompt("Informe o seu nome:")
+        var idade = prompt("Informe sua idade:")
+        var altura = prompt("Informe sua altura:")
+
+        document.write(`Seja muito bem vindo <strong>${nome}</strong>, você tem <strong>${idade}</strong> anos de idade e <strong>${altura}</strong> de altura! `)
+
+        document.write(`Seu nome em maiúsculas fica <strong>${nome.toUpperCase()}</strong> e em minúsculas fica <strong>${nome.toLowerCase()}</strong>. Seu nome possui <strong>${nome.length}</strong> letras.`)
+    </script>
+</body>
+</html>
