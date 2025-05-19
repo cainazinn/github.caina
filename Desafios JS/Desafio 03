@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Antes e Depois</h1>
+    <button onclick="clicar()">Antecessor e Sucessor</button>
+    <script>
+        function clicar(){
+            var n = Number(prompt("Digite um número inteiro qualquer"))
+            var ant = n - 1
+            var suc = n + 1 
+
+            alert(`Antes do número ${n}, temos o número ${ant}. Depois do número ${n}, temos o número ${suc}.`)
+        }
+    </script>
+</body>
+</html>
