@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #118c5b;
+            color: white;
+            font: normal 15pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciando estudos com <strong>DOM</strong></h1>
+    <p>Aqui vai o resultado!</p>
+    <p>Aprendendo a usar o <strong>DOM</strong> em JavaScript!</p>
+    <div class="msg">Clique em mim!</div><br>
+    <script>
+       /* var corpo = document.body
+        corpo.style.backgroundColor = "black"
+        var p1 = window.document.getElementsByTagName("p")[1]
+        window.document.write("Está escrito assim: " + p1.innerHTML)
+        p1.style.color = "yellow" */
+        
+        /* var d = document.getElementById("msg")
+        d.style.backgroundColor = "grey"
+        d.innerText = "Não clique mais em mim!" */
 
+        /* var d = document.getElementsByName("msg")[0]
+        d.innerHTML = "Olá, Mundo" */
+
+        /* var d = document.getElementsByClassName("msg")[0]
+        d.innerHTML = "Olá" */
+
+        var d = document.querySelector("div.msg")
+        d.style.color = "yellow"
+        d.style.backgroundColor = "black"
+    
+     
+    </script>
+</body>
+</html>
