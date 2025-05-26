@@ -35,6 +35,7 @@
         d.innerHTML = "Olá" */
 
         var d = document.querySelector("div.msg")
+        d.innerText = "Não clique mais em mim!"
         d.style.color = "yellow"
         d.style.backgroundColor = "black"
     
