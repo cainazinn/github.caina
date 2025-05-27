@@ -3,46 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Somando Números</title>
+    <title>Document</title>
     <style>
+        :root{
+    --azultop:linear-gradient(90deg, #1d6791, #256d83, #000000);
+    
+}
         body{
-            font: normal 18pt Arial;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            font: normal 18pt Arial;
+            height: 100vh; 
+            margin: 0;    
         }
         input{
-            font: normal 15pt Arial;
-            width: 100px;
+            font: normal 18pt Arial;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0px 5px var(--linear-gradient);
+            
         }
         button{
-            display: flex;
-            margin: 20px 70px;
-            padding: 10px 45px;
-            cursor: pointer;
+            margin-top: 20px;
+            padding: 15px 30px;
             border: none;
             border-radius: 10px;
-            
+            transition: ease 0.8s;
+        }
+        button:hover{
+            background-color: black ;
+            color: white;
+        }
+        #res{
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Somando Valores</h1>
-    <input type="number" name="txtn1" id="txtn1"> +
-    <input type="number" name="txtn2" id="txtn2">
+    <input type="number" name="txt1" id="txt1"> +
+    <input type="number" name="txt2" id="txt2">
     <button onclick="somar()">Somar</button>
-    <div class="res">Resultado</div> 
+    <div id="res"></div>
     <script>
         function somar(){
 
-            var tn1 = document.querySelector("input#txtn1")
-            var tn2 = document.querySelector("input#txtn2")
+            var tn1 = document.querySelector("input#txt1")
+            var tn2 = document.querySelector("input#txt2")
             var n1 = Number(tn1.value)
             var n2 = Number(tn2.value)
-            var soma = n1 + n2
-            var res = document.querySelector("div.res")
-            res.innerHTML = `A soma entre ${n1} e ${n2} é igual a ${soma}!`
-            
+            var som = n1 + n2
+            var res = document.querySelector("div#res")
+            res.innerHTML = `A soma entre ${n1} e ${n2} é igual a ${som}`
+
         }
     </script>
 </body>
