@@ -1,0 +1,91 @@
+<!-- <!DOCTYPE html>  
+<html lang="pt-br">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="clicar()">Calcular o troco</button>
+    
+    <script>
+
+    
+        function clicar(){
+
+            var prod = prompt("Qual produto você deseja comprar?")
+            var preço = Number(prompt(`Quanto custa o ${prod} que você deseja comprar?`))
+            var pag = Number(prompt(`Quanto você pagou pelo ${prod}?`))
+            var troco = pag - preço
+            document.write(`Você comprou um ${prod} por ${preço.toLocaleString("pt-br", {style: "currency", currency:"BRL"})}. Você pagou ${pag.toLocaleString("pt-br", {style:"currency", currency: "BRL"})}, logo receberá ${troco.toLocaleString("pt-br", {style:"currency", currency: "BRL"})} de troco.`)
+        }
+    </script>
+    
+</body>
+</html>
+<!--  -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            font: normal 18pt Arial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 850px;
+            justify-content: center;     
+            background-color: rgb(43, 143, 173);
+        }
+        input{
+            font: normal 15pt Arial;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 10px;
+        }
+        button{
+            cursor: pointer;
+            font: normal 15pt times;
+            margin: 20px;
+            padding: 5px 30px;
+            border: none;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+        div{
+            font: normal 15pt Arial;
+        }
+        button:hover{
+            background-color: rgb(242, 190, 106);
+        }
+    </style>
+    <title>Calculando Números</title>
+</head>
+<body>
+    <h1>Somando Números</h1>
+    <input type="number" id="txtn1" name="txtn1"> +
+    <input type="number" id="txtn2" name="txtn2">
+    <button onclick="somar()">Somar</button>
+    <div id="resto"></div>
+
+    <script>
+        
+        function somar(){
+            var caixa1 = document.querySelector("input#txtn1")
+            var caixa2 = document.querySelector("input#txtn2")
+            var n1 = Number(caixa1.value)
+            var n2 = Number(caixa2.value)
+            var soma = n1 + n2
+            var resto = document.querySelector("div#resto")
+            resto.innerHTML = `A soma entre os números <strong>${n1}</strong> e <strong>${n2}</strong> é igual a <strong>${soma}</strong> !`
+
+        }
+        
+
+
+    </script>
+</body>
+</html>
