@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETRAM</title>
+</head>
+<body>
+    <h1>Sistema de Multas</h1>
+    Velocidade do carro: <input type="number" id="inpt"> Km/h <br><br>
+    <button onclick="verific()">Verificar</button> <br>
+    <p id="result"></p>
+    <script>
+        function verific(){
+            var input = document.querySelector("input#inpt")
+            var vel = Number(input.value)
+            var res = document.querySelector("p#result")
+            res.innerHTML = `Sua velocidade é de <strong>${vel}</strong> Km/h!`
+            if(vel > 60){
+                res.innerHTML += `<p>Você foi <strong>MULTADO</strong> por superar o limite de velocidade!</p>`
+            }
+            res.innerHTML += `<p>Dirija <strong>SEMPRE</strong> usando o cinto de segurança!</p>`
+        }
+        
+
+    </script>
+</body>
+</html>
