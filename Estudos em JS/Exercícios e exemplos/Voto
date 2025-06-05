@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votação</title>
+</head>
+<body>
+    <h1>Sou obrigado a votar?</h1>
+    Minha idade é: <input type="text" id="inpt">
+    <button onclick="verificar()">Verificar</button>
+    <p id="result"></p>
+    <script>
+        function verificar(){
+            var input = document.querySelector("input#inpt")
+            var idade = (input.value)
+            var result = document.querySelector("p#result")
+            result.innerHTML = `Você tem <strong>${idade}</strong> anos de idade`
+            if(idade < 16){
+                result.innerHTML += `Você ainda não pode votar!`
+            } else if (idade >= 16 < 18){
+                result.innerHTML += `Você pode votar, mas NÃO é obrigatório!`
+            } else{
+                result.innerHTML += `Você é obrigado a votar!`
+            }
+        }
+    </script>
+
+</body>
+</html>
