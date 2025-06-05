@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilometragem</title>
+</head>
+<body>
+    <h1>DETRAM</h1>
+    Estou a <input type="number" id="inpt"> km/h <br><br>
+    <button onclick="verificar()">Verificar</button>
+    <p id="result"></p>
+    <script>
+        function verificar(){
+            var input = document.querySelector("input#inpt")
+            var vel = Number(input.value)
+            var resultado = document.querySelector("p#result")
+            resultado.innerHTML = `Sua velocidade é de <strong>${vel} Km/h</strong>.`
+            if(vel > 60){
+                resultado.innerHTML += `<p>Você foi multado por dirigir acima do limite de velocidade!</p>`
+            }
+            resultado.innerHTML += `<p>Sempre dirija usando o cinto de segurança!!</p>`
+        }
+    </script>
+</body>
+</html>
