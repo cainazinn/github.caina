@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Período do dia</title>
+</head>
+<body>
+    <h1>Período do dia</h1>
+    Que horas são? <input type="text23:59" id="inpt">
+    <button onclick="verific()">Verificar</button>
+    <p id="result"></p>
+    <script>
+        function verific(){
+            var input = document.querySelector("input#inpt")
+            var horas = (input.value)
+            var res = document.querySelector("p#result")
+            res.innerHTML = `São exatamente ${horas} horas.`
+            if(horas >= 5 && horas < 12){
+                res.innerHTML += `<p>Bom dia!</p>`
+            }else if(horas >= 12 && horas < 18){
+                res.innerHTML += `<p>Boa tarde!</p>`
+            }else if(horas > 18 && horas <= 23){
+                res.innerHTML += `<p>Boa noite!</p>`
+            }else if(horas > 0 && horas <= 4){
+                res.innerHTML += `<p>Está de madrugada, vá dormir!</p>`
+            }else{
+                res.innerHTML = `<p>Hora não informada.</p>`
+            }
+
+        }
+    </script>
+</body>
+</html>
