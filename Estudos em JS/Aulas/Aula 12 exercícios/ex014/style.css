@@ -3,18 +3,30 @@ body{
     font: normal 15pt Arial;
 
 }
+
 header{
     color: white;
     text-align: center; /*Centralizar*/
 }
+
 section{
     background-color: white;
     border-radius: 10px; /*Arredondar as bordas*/
     padding: 15px; /*Espaçamento*/
     width: 500px; /*Largura*/
+    height: 300px;
     margin: auto; /*Centralizar*/
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.637);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.63); /*Sombra*/
 }
+
+#imagem{
+    margin-top: -155px;
+    margin-left: -15px;
+}
+#msg{
+    text-align: center;
+}
+
 footer{
     color: white;
     text-align: center; /*Centralizar*/
