@@ -7,5 +7,6 @@ function verific(){
     var anoAtual = data.getFullYear()
     var idade = anoAtual - anoNasc
 
-    div.innerHTML = `Sua idade é.`
+    div.innerHTML = `Sua idade é ${idade}.`
+    if(idade >)
 }
