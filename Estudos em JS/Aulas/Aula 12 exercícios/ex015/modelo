@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de Exercício</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Verificador de idade</h1>
+    </header>
+    <section>
+        <div>
+            <p>Ano de nascimento: <input type="number" id="inpt"></p>
+            <p>Sexo: </p>
+            <p><button onclick="verific()">Verificar</button></p>
+        </div>
+        <div id="msg">
+            <p>Preencha os dados acima para ver o resultado!</p>
+            <img id="imagem" src="adulto_masc.png" alt="Foto do perfil.">
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Curso em vídeo</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
