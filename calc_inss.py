@@ -6,6 +6,7 @@ vinculação = input("Informe como você exerce sua atividade profissional:")
 
 
 if vinculação == "clt": #Se o cidadão trabalhar de carteira assinada, seu desconto INSS será calculado da seguinte forma:
+
     if salário <= 1518.00:
         inss = salário * 0.075
 
@@ -25,6 +26,7 @@ if vinculação == "clt": #Se o cidadão trabalhar de carteira assinada, seu des
 
 
 elif vinculação == "autônomo": #Se o cidadão for autônomo, seu desconto INSS será calculado da seguinte forma: 
+
     if salário <= 8157.41:
         inss = salário * 0.20
     else:
@@ -32,6 +34,7 @@ elif vinculação == "autônomo": #Se o cidadão for autônomo, seu desconto INS
     
 
 elif vinculação == "empresário": #Se o cidadão for empresário, seu desconto INSS será calculado da seguinte forma:
+    
     if salário <= 8157.41:
         inss = salário * 0.11
     else:
