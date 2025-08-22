@@ -30,7 +30,7 @@ elif vinculação == "autônomo": #Se o cidadão for autônomo, seu desconto INS
     if salário <= 8157.41:
         inss = salário * 0.20
     else:
-        inss = salário * 0.20 #Mesmo que o salário do cidadão passe de R$8.157,41, seu desconto INSS já atingiu o limite.
+        inss = salário * 0.14 #Mesmo que o salário do cidadão passe de R$8.157,41, seu desconto INSS já atingiu o limite.
     
 
 elif vinculação == "empresário": #Se o cidadão for empresário, seu desconto INSS será calculado da seguinte forma:
@@ -38,9 +38,9 @@ elif vinculação == "empresário": #Se o cidadão for empresário, seu desconto
     if salário <= 8157.41:
         inss = salário * 0.11
     else:
-        inss = salário * 0.11 #Mesmo que o salário do cidadão passe de R$8.157,41, seu desconto INSS já atingiu o limite.
+        inss = salário * 0.14 #Mesmo que o salário do cidadão passe de R$8.157,41, seu desconto INSS já atingiu o limite.
 
 
-print("Você pagará R$", round(inss, 2), sep="", end=" ")
+print("Você pagará por mês R$", round(inss, 2), sep="", end=" ")
 print("de INSS.")
 #Por fim, o programa irá mostrar quanto o cidadão terá que pagar de INSS.
