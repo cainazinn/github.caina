@@ -1,0 +1,46 @@
+body{
+    background-color: rgb(21, 127, 197);
+    color: white;
+}
+
+header{
+    text-align: center;
+    margin-top: 50px;
+}
+
+section{
+    margin: auto;
+    background-color: white;
+    color: black;
+    box-shadow: -6px 5px 5px rgba(0, 0, 0, 0.467);
+    font: normal 13pt Arial;
+    border-radius: 15px;
+    padding: 85px 30px ;
+    width: 400px;
+    height: 150px;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
+
+#resultado{
+    font: normal 13pt Arial;
+}
+
+button{
+    background-color: rgb(14, 112, 232);
+    color: white;
+    align-items: center;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: none;
+
+    
+}
+
+button:hover{
+    background-color: rgb(21, 77, 156);
+    
+}
