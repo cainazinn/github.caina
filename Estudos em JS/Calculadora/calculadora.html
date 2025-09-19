@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento Modelo</title>
+    <link rel="stylesheet" href="calculadora.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+    </header>
+    
+    <section>
+        <div>
+            <input type="number" id="n1" placeholder="Informe o primeiro número.">
+            <input type="number" id="n2" placeholder="Informe o segundo número.">
+
+            <select name="operacoes" id="operacoes">
+                <option value="somar">+</option>
+                <option value="subtrair">-</option>
+                <option value="multiplicar">*</option>
+                <option value="dividir">/</option>
+            </select>
+
+            <button onclick="calcular()">Calcular</button>
+        </div>
+        <div id="resultado">
+
+        </div>
+    </section>
+
+    <footer>
+        
+    </footer>
+
+    <script>
+        function calcular(){
+
+            let n1 = Number(document.querySelector("input#n1").value)
+            let n2 = Number(document.querySelector("input#n2").value)
+            let operacao = document.querySelector("select#operacoes").value
+            let resultado = document.querySelector("div#resultado")
+
+            if(operacao == "somar"){
+
+                let som = n1 + n2
+                resultado.innerHTML = `${som}`
+
+            } else if(operacao == "subtrair"){
+
+                let sub = n1 - n2
+                resultado.innerHTML = `${sub}`
+
+            } else if(operacao == "multiplicar"){
+
+                let mult = n1 * n2
+                resultado.innerHTML = `${mult}`
+
+            } else{
+                let divis = n1 / n2
+                resultado.innerHTML = `${divis}`
+            }
+        }
+    </script>
+</body>
+</html>
