@@ -11,6 +11,7 @@ import time
 #                                               |    
 # ===============================================
 
+
 # Abre o navegador
 navegador = webdriver.Chrome()
 print("Abriu o navegador")
@@ -92,6 +93,14 @@ entrar3.click()
 print("Botão de entrar clicado")
 
 
+# ======================================================================================
+#                                                                                      |
+# Fase 2: Acessar os documentos, acessar a empresa e o setor pessoal dela              |
+#                                                                                      |    
+# ======================================================================================
+
+
+
 # Espera até que o botão de acessar os documentos esteja presente na tela
 WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/bm-optional-header/bm-staff-custom-header/bm-header/header/ul[2]/li[2]/li/a/i")))
 print("Esperou até o botão de documentos aparecer")
@@ -168,6 +177,13 @@ print("Setor pessoal acessado")
 
 # Espera 2 segundos
 time.sleep(2)
+
+
+# ===================================================================================
+#                                                                                   |
+# Fase 3: Criar uma nova pasta referente ao ano de 2026 no setor pessoal da empresa |
+#                                                                                   |    
+# ===================================================================================
 
 
 # Procura o botão de criar novo até encontrá-lo
