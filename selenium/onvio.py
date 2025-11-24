@@ -2,7 +2,14 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from datetime import datetime
+from selenium.common.exceptions import TimeoutException
 import time
+import pyautogui
+
+
+ano_atual = datetime.now().year
+print(ano_atual)
 
 
 # ===============================================
@@ -25,8 +32,8 @@ navegador.maximize_window()
 print("Botou em tela cheia")
 
 
-# Pede ao navegador que espere até 10 segundos até que tal elemento esteja presente na tela (nesse caso o botão de entrar)
-WebDriverWait(navegador, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[1]/div/main/div/onvio-login/div/div[1]/fieldset/div/div/section/form[3]/div/button")))
+# Pede ao navegador que espere até 10 segundos até que tal elemento esteja presente e clicável na tela (nesse caso o botão de entrar)
+WebDriverWait(navegador, 10).until(EC.element_to_be_clickable((By.XPATH, "  /html/body/div/div[1]/div/main/div/onvio-login/div/div[1]/fieldset/div/div/section/form[3]/div/button")))
 print("Esperou até o botão de entrar aparecer na tela")
 
 
@@ -146,7 +153,7 @@ print("Caixa de procurar empresas preenchida")
 
 
 # Espera 5 segundos 
-time.sleep(5)
+time.sleep(3)
 
 
 # Procura o campo referente a empresa desejada até encontrá-la
@@ -162,6 +169,7 @@ print("Clicou na empresa desejada")
 WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-storage-grid/div/div/div[9]/div[2]/div[1]/div[7]/div[3]/div/div/dms-grid-text-cell/div/span[1]/a")))
 print("Esperou até o link do setor pessoal aparecer")
 
+
 # Espera 2 segundos
 time.sleep(2)
 
@@ -176,7 +184,7 @@ print("Setor pessoal acessado")
 
 
 # Espera 2 segundos
-time.sleep(2)
+time.sleep(5)
 
 
 # ===================================================================================
@@ -236,17 +244,175 @@ salvar_nova_pasta.click()
 print("Nova pasta salva")
 
 
+# Espera até que o botão de acessar a pasta 2025 esteja clicável na tela
+WebDriverWait(navegador, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[2]/div[1]/div[3]/div[2]/div/span/dms-grid-text-cell/div/span[1]/a")))
+
+
+# Espera 3 segundos
+time.sleep(3)
+
+
+# Procura a pasta 2025 e a acessa
+pasta_2025 = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[2]/div[1]/div[3]/div[2]/div/span/dms-grid-text-cell/div/span[1]/a")
+print("Pasta 2025 encontrada")
+
+# Acessa a pasta 2025 assim que é encontrada
+pasta_2025.click()
+print("Pasta 2025 acessada")
+
+
+# Espera 2 segundos
+time.sleep(2)
+
+
+# Procura o botão de selecionar a subpasta "folha de pagamento" até encontrá-lo
+subpasta_folhaPagamento2025 = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[4]/div/div[2]/div/div/i")
+print("Botão de selecionar a subpasta folha de pagamento encontrado")
+
+# Clica no botão de selecionar a subpasta "folha de pagamento" assim que é encontrado
+subpasta_folhaPagamento2025.click()
+print("Subpasta 'folha de pagamento' selecionada")
+
+# Procura o botão de selecionar a subpasta "adiantamento" até encontrá-lo
+subpasta_adiantamento2025 = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[4]/div/div[1]/div/div/i")
+print("Botão de selecionar a subpasta 'adiantamento' encontrado")
+
+# Clica no botão de selecionar a subpasta "adiantamento" assim que é encontrado
+subpasta_adiantamento2025.click()
+print("Subpasta 'adiantamento' selecionada")
+
+
+# Espera 2 segundos
+time.sleep(2)
+
+
+# Procura o botão de gerenciar pasta até encontrá-lo
+gerenc_pasta = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[4]/a")
+print("Botão de gerenciar a pasta encontrado")
+
+
+# Clica no botão de gerenciar pasta assim que é encontrado
+gerenc_pasta.click()
+print(" Botão de gerenciar a pasta clicado")
+
+
+# Espera 2 segundos
+time.sleep(2)
+
+
+# Procura o botão de copiar até encontrá-lo
+copiar_subpastas = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[4]/ul/li[4]/a")
+print("Botão de copiar subpastas encontrado")
+
+
+# CLica no botão de copiar assim que é encontrado
+copiar_subpastas.click()
+print("Botão de copiar subpastas clicado")
+
+
+# Espera até que o botão de voltar na área de 'copiar para' esteja presente na tela
+WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/div/span[1]")))
+
+
+# Espera 2 segundos
+time.sleep(2)
+
+
+# Na área de "copiar para" procura o botão de voltar para o setor pessoal até encontrá-lo
+voltar_copiarPara = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/div/span[1]")
+print("Botão de voltar na área de 'copiar para' encontrado")
+
+# Clica no botão de voltar na área de 'copiar para' assim que é encontrado
+voltar_copiarPara.click()
+print("Botão de voltar na área de 'copiar para' clicado")
+
+
+# Espera até que o botão de selecionar a pasta 2026 na área de 'copiar para' esteja presente na tela
+WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/ul/li[3]")))
+
+
+# Espera 2 segundos
+time.sleep(2)
+
+
+# Procura o botão que seleciona a pasta 2026 na área de 'copiar para' até encontrá-lo
+selecPasta2026_copiarPara = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/ul/li[3]")
+print("Botão de selecionar a pasta 2026 na área de 'copiar para' encontrado")
+
+
+# Clica no botão de selecionar a pasta 2026 na área de 'copiar para' assim que é encontrado
+selecPasta2026_copiarPara.click()
+print("Botão de selecionar pasta 2026 na área de 'copiar para' clicado")
+
+
+# Espera 2 segundos
+time.sleep(2)
+
+
+# Procura o botão de confirmar para copiar até encontrá-lo
+confirm_copiar = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[3]/button[1]")
+print("Botão de confirmar para copiar encontrado")
+
+# Clica no botão de confirmar para copiar assim que é encontrado
+confirm_copiar.click()
+print("Subpastas copiadas para a pasta 2026")
+
+
+# WebDriverWait(navegador, 10).until(EC.element_to_be_clickable((By.XPATH, "")))
+
+
+# Espera 3 segundos
+time.sleep(3)
+
+pyautogui.moveTo(145, 630)
+pyautogui.click()
+
+
+
+# Espera 3 segundos
+time.sleep(3)
+
+# Procura o botão de selecionar a pasta 2026 até encontrá-lo
+selecPasta2026 = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[4]/div/div[1]/div/div/i")
+print("Botão de selecionar a pasta 2026 encontrado")
+
+# Clica no botão de selecionar a pasta 2026 assim que ele é encontrado
+selecPasta2026.click()
+print("Pasta 2026 selecionada")
+
+
+# Espera 2 segundos
+time.sleep(2)
+
+
+# Procura o botão de gerenciar pasta até encontrá-lo
+gerenc_pasta = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[4]/a")
+print("Botão de gerenciar a pasta encontrado")
+
+
+# Clica no botão de gerenciar pasta assim que é encontrado
+gerenc_pasta.click()
+print("Botão de gerenciar a pasta clicado")
+
+
+# Espera 2 segundos
+time.sleep(2)
+
+
+# Procura o botão de copiar até encontrá-lo
+copiar_pasta2026 = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[4]/ul/li[4]/a")
+print("Botão de copiar pasta encontrado")
+
+
+# CLica no botão de copiar assim que é encontrado
+copiar_pasta2026.click()
+print("Botão de copiar pasta clicado")
+
+
 # Espera 10 segundos
 time.sleep(10)
 
 
-
-
-# copiar_pasta = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[4]/div/div[3]/div/div/i")
-# print("Botão de copiar pasta encontrado")
-
-# copiar_pasta.click()
-# print("Botão de copiar pasta clicado")
 
 
 # time.sleep(2)
@@ -311,4 +477,3 @@ time.sleep(10)
 
 
 # time.sleep(10)
-
