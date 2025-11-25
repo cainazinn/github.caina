@@ -166,7 +166,7 @@ print("Clicou na empresa desejada")
 
 
 # Espera até que o link referente ao setor pessoal da empresa desejada esteja presente na tela
-WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-storage-grid/div/div/div[9]/div[2]/div[1]/div[7]/div[3]/div/div/dms-grid-text-cell/div/span[1]/a")))
+WebDriverWait(navegador, 20).until(EC.presence_of_element_located((By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-storage-grid/div/div/div[9]/div[2]/div[1]/div[7]/div[3]/div/div/dms-grid-text-cell/div/span[1]/a")))
 print("Esperou até o link do setor pessoal aparecer")
 
 
@@ -412,68 +412,3 @@ print("Botão de copiar pasta clicado")
 # Espera 10 segundos
 time.sleep(10)
 
-
-
-
-# time.sleep(2)
-
-
-# selecionar_nova_pasta = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/ul/li[3]/span[2]")
-# print("Botão selecionar nova pasta encontrado")
-
-# selecionar_nova_pasta.click()
-# print("Botão selecionar nova pasta clicado")
-
-
-# time.sleep(2)
-
-
-# botao_copiar = navegador.find_elements(By.XPATH, "/html/body/div[1]/div/div/div/div[3]/button[1]")
-# print("Botão copiar encontrado")
-
-# botao_copiar.click()
-# print("Botão copiar clicado")
-
-# time.sleep(3)
-
-
-
-
-# selecionar_pasta = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[4]/div/div[3]/div/div/i")
-# print("Botão de selecionar pasta encontrado")
-
-# selecionar_pasta.click()
-# print("Pasta selecionada")
-
-
-# time.sleep(2)
-
-
-# gerenciar_pasta = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[4]/a")
-# print("Botão de gerenciar encontrado")
-
-# gerenciar_pasta.click()
-# print("Botão de gerenciar clicado")
-
-
-# time.sleep(2)
-
-
-# copiar_pasta = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[4]/ul/li[4]/a")
-# print("Botão de copiar pasta encontrado")
-
-# copiar_pasta.click()
-# print("Pasta copiada")
-
-
-# WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div[3]/button[1]")))
-# print("Esperou até o botão de confirmação para copiar aparecer")
-
-
-# confirm_copiar = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[3]/button[1]")
-# print("Botão de coonfirmação para copiar encontrado")
-
-# confirm_copiar.click()
-
-
-# time.sleep(10)
