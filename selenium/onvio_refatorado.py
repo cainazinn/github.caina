@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from datetime import datetime
+import pyautogui
 import time
 
 ano_atual = datetime.now().year
@@ -125,7 +126,8 @@ def selecionar_empresa(navegador, nome_empresa):
                             # | ---------> Função: Acessar setor pessoal <---------
 
 def acessar_setorPessoal(navegador):
-    xpath_setorPessoal = f"//a[contains(text(), 'Pessoal')]"
+
+    xpath_setorPessoal = "//span[contains(text(), 'Pessoal')]/ancestor::div[1]"
     esperar_click(navegador, xpath_setorPessoal)
 
     time.sleep(2)
