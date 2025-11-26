@@ -13,6 +13,8 @@ import time
 ano_atual = datetime.now().year
 print(ano_atual)
 
+ano_seguinte = ano_atual + 1
+
 
 # ===============================================
 #                                               |
@@ -290,7 +292,13 @@ if pasta_2026_existe:
         actionChains.double_click(pasta).perform()
 
     
+    subpastasPessoal = navegador.find_elements(By.CLASS_NAME, "item")
 
+    ano_seguinte = False
+
+    for subpasta in subpastasPessoal:
+        if subpasta.text == f"{ano_seguinte}":
+            pass
 
 
 else:
