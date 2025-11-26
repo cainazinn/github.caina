@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from datetime import datetime
-import pyautogui
+from pyautogui import moveTo, click
 import time
 
 ano_atual = datetime.now().year
@@ -25,9 +25,6 @@ def digitar(navegador, xpath, texto):
     esperar_presenca(navegador, xpath)
     navegador.find_element(By.XPATH, xpath).send_keys(texto)
 
-def mudar_aba(navegador, indice):
-    abas = navegador.window_handles
-    navegador.switch_to.window(abas[indice])
 
 
                             # | ---------> Função: Login na Onvio <--------- |
@@ -88,6 +85,13 @@ def login_onvio(navegador):
     print("Terceiro botão de entrar clicado")
 
 
+                            # | ---------> Função: Mudar aba <--------- |
+
+def mudar_aba(navegador, indice):
+    abas = navegador.window_handles
+    navegador.switch_to.window(abas[indice])
+
+    
                             # | ---------> Função: Acessar documentos <--------- |
 
 def acessar_documentos(navegador):
@@ -126,14 +130,48 @@ def selecionar_empresa(navegador, nome_empresa):
                             # | ---------> Função: Acessar setor pessoal <---------
 
 def acessar_setorPessoal(navegador):
+    
+    navegador.maximize_window()
+    navegador.switch_to.window(navegador.window_handles[1])
+    navegador.execute_script("window.focus();")
 
-    xpath_setorPessoal = "//span[contains(text(), 'Pessoal')]/ancestor::div[1]"
-    esperar_click(navegador, xpath_setorPessoal)
+    time.sleep(1)
 
-    time.sleep(2)
+    moveTo(143, 622)
 
-    clicar(navegador, xpath_setorPessoal)
-    print("Setor pessoal da empresa acessado")
+    click()
+    print(f"Acessando setor pessoal da empresa")
+
+    time.sleep(5)
+
+
+                            # | ---------> Função: Criar pasta se não existir <---------
+
+def criar_pasta_seNãoExistir(navegador, ano_atual):
+
+    print(f"Verificando se a pasta do ano {ano_atual + 1} existe")
+    try:
+        # Tenta encontrar a pasta 2026
+        xpath_pasta2026 = f"//a[contains(text(), '{ano_atual + 1}')]"
+
+        esperar_presenca(navegador, xpath_pasta2026)
+
+        # Se encontrar diz que a pasta já existe 
+        print(f"Pasta {ano_atual + 1} já existe!")
+
+        time.sleep(2)
+        return
+    
+    # Se não encontrar cria uma nova pasta    
+
+    except:
+        print(f"Pasta {ano_atual + 1} não encontrada, criando...")
+
+        xpath_criarNovo = "//a[contains(text(), 'Novo')]"
+        clicar(navegador, xpath_criarNovo)
+
+        time.sleep(2)
+
 
 
                             # | ---------> Fluxo Principal <---------
@@ -145,7 +183,7 @@ acessar_documentos(navegador)       # Chama a função que acessa a área de doc
 mudar_aba(navegador, 1)     # Chama a função que muda a aba para continuar executando o código 
 selecionar_empresa(navegador, "Empresa exemplo simples nacional")       # Chama a função que procura a empresa e a acessa
 acessar_setorPessoal(navegador)     # Chama a função que acessa o setor pessoal da empresa atualmente acessada
-    
+criar_pasta_seNãoExistir(navegador, ano_atual + 1)
 
 
 
