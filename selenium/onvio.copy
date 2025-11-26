@@ -418,7 +418,13 @@ for pasta in pastasEmpresa:
 if pessoal:
     actionChains.double_click(pasta).perform()
 
+subpastasPessoal = navegador.find_elements(By.CLASS_NAME, "item")
 
+ano_seguinte = False
+
+for subpasta in subpastasPessoal:
+    if subpasta.text == f"{ano_seguinte}":
+        pass
 
 
 time.sleep(10)
