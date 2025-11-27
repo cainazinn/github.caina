@@ -217,6 +217,8 @@ except TimeoutException:
 
 
 if pasta_2026_existe:
+
+    listaEmpresas = navegador.find_elements(By.CLASS_NAME, "combobox-grid-column")
     print("A pasta 2026 já existe.")
 
     # Procura o botão de selecionar a pasta até encontrá-lo
@@ -275,30 +277,80 @@ if pasta_2026_existe:
 
     time.sleep(2)
 
+    # Retorna uma lista com todas as pastas da empresa tal
     pastasEmpresa = navegador.find_elements(By.CLASS_NAME, "item")
 
     pessoal = False 
+
+    # Percorre as pastas da empresa até achar a pasta do setor Pessoal
 
     for pasta in pastasEmpresa:
         if pasta.text == "Pessoal":
             print(pasta.text)
             pessoal = True
+            local = pasta
             break
 
         else:
             continue
 
+    # Se encontrar, da um duplo click para acessar
     if pessoal:
-        actionChains.double_click(pasta).perform()
+        actionChains.double_click(local).perform()
+        print("Setor pessoal acessado")
 
-    
-    subpastasPessoal = navegador.find_elements(By.CLASS_NAME, "item")
+    time.sleep(2)
 
-    ano_seguinte = False
+    confirm_copiar = navegador.find_element(By.XPATH, "//button[contains(text(), 'Copiar')]")
+    confirm_copiar.click()
+    print("Pasta copiada na outra empresa")
 
-    for subpasta in subpastasPessoal:
-        if subpasta.text == f"{ano_seguinte}":
-            pass
+    time.sleep(2)
+
+    try:
+        WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "bento-icon-close-x")))
+
+        fechar_popUp_alerta_existe = True
+
+    except TimeoutException:
+        fechar_popUp_alerta_existe = False
+
+
+    if fechar_popUp_alerta_existe:
+
+        pyautogui.moveTo(914, 651)
+        pyautogui.click()
+        print("Pop-up clicado")
+
+            # fechar_popUp_alerta = navegador.find_element(By.CLASS_NAME, "bento-icon-close-x")
+            # fechar_popUp_alerta.click()
+
+
+
+
+
+
+    # subpastasPessoal = navegador.find_elements(By.XPATH, "span[contains(text(), '2026')]")
+
+    # pasta2026 = False
+
+    # for subpasta in subpastasPessoal:
+    #     print(subpasta.text)
+    #     if subpasta.text == "2026":
+    #         print(subpasta.text)
+    #         pasta2026 = True
+    #         break
+
+    #     else:
+    #         continue
+
+    # if pasta2026:
+    #     print("Pasta 2026 encontrada")
+    #     xpath_cancelar = "//button[contains(text(), 'Cancelar')]"
+    #     WebDriverWait(navegador, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_cancelar)))
+    #     navegador.find_element(By.XPATH, xpath_cancelar).click()
+
+        
 
 
 else:
@@ -449,6 +501,10 @@ else:
     # Espera 3 segundos
     time.sleep(3)
 
+
+
+
+
     # Procura o botão de selecionar a pasta 2026 até encontrá-lo
     selecPasta2026 = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[4]/div/div[1]/div/div/i")
     print("Botão de selecionar a pasta 2026 encontrado")
@@ -479,6 +535,78 @@ else:
     copiar_pasta2026.click()
     print("Botão de copiar pasta clicado")
 
+    # Espera a caixa de pesquisar empresa na área de copiar para aparecer
+    WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/dms-clients-combobox/div/div[2]/div[1]/input")))
+
+    time.sleep(2)
+
+    # Procura a aixa de procurar empresa na área de copiar para até encontrar
+    caixa_pesquisarEmpresa = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/dms-clients-combobox/div/div[2]/div[1]/input")
+
+    # Seleciona todo o texto da caixa
+    caixa_pesquisarEmpresa.send_keys(Keys.CONTROL, "a")
+
+    time.sleep(2)
+
+    # Apaga todo o texto selecionado
+    caixa_pesquisarEmpresa.send_keys(Keys.DELETE)
+
+    time.sleep(2)
+    
+    # Escreve o nome da empresa desejada
+    caixa_pesquisarEmpresa.send_keys("2WV CONSTRUCOES E REFORMAS LTDA ") # A alterar
+
+    time.sleep(2)
+
+    # Confirma a pesquisa para que a área da empresa apareça
+    caixa_pesquisarEmpresa.send_keys(Keys.ENTER)
+
+    time.sleep(2)
+
+    # Retorna uma lista com todas as pastas da empresa tal
+    pastasEmpresa = navegador.find_elements(By.CLASS_NAME, "item")
+
+    pessoal = False 
+
+    # Percorre as pastas da empresa até achar a pasta do setor Pessoal
+
+    for pasta in pastasEmpresa:
+        if pasta.text == "Pessoal":
+            print(pasta.text)
+            pessoal = True
+            local = pasta
+            break
+
+        else:
+            continue
+
+    # Se encontrar, da um duplo click para acessar
+    if pessoal:
+        actionChains.double_click(local).perform()
+        print("Setor pessoal acessado")
+
+    time.sleep(2)
+
+    confirm_copiar = navegador.find_element(By.XPATH, "//button[contains(text(), 'Copiar')]")
+    confirm_copiar.click()
+    print("Pasta copiada na outra empresa")
+
+    time.sleep(2)
+
+    try:
+        WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "bento-icon-close-x")))
+
+        fechar_popUp_alerta_existe = True
+
+    except TimeoutException:
+        fechar_popUp_alerta_existe = False
+
+
+    if fechar_popUp_alerta_existe:
+
+        pyautogui.moveTo(914, 651)
+        pyautogui.click()
+        print("Pop-up clicado")
 
 
 
