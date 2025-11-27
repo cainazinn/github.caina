@@ -393,7 +393,7 @@ caixa_pesquisarEmpresa.send_keys(Keys.DELETE)
 time.sleep(2)
 
 # Escreve o nome da empresa desejada
-caixa_pesquisarEmpresa.send_keys("2WV CONSTRUCOES E REFORMAS LTDA ")
+caixa_pesquisarEmpresa.send_keys("2WV CONSTRUCOES E REFORMAS LTDA ") # A alterar
 
 time.sleep(2)
 
@@ -409,6 +409,7 @@ pessoal = False
 for pasta in pastasEmpresa:
     if pasta.text == "Pessoal":
         print(pasta.text)
+        local = pasta
         pessoal = True
         break
 
@@ -416,15 +417,31 @@ for pasta in pastasEmpresa:
         continue
 
 if pessoal:
-    actionChains.double_click(pasta).perform()
+    actionChains.double_click(local).perform()
 
-subpastasPessoal = navegador.find_elements(By.CLASS_NAME, "item")
 
-ano_seguinte = False
+time.sleep(2)
 
-for subpasta in subpastasPessoal:
-    if subpasta.text == f"{ano_seguinte}":
-        pass
 
+confirm_copiar = navegador.find_element(By.XPATH, "//button[contains(text(), 'Copiar')]")
+confirm_copiar.click()
+print("Pasta copiada na outra empresa")
+
+time.sleep(2)
+
+try:
+    WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "bento-icon-close-x")))
+
+    fechar_popUp_alerta_existe = True
+
+except TimeoutException:
+    fechar_popUp_alerta_existe = False
+
+
+if fechar_popUp_alerta_existe:
+
+    pyautogui.moveTo(914, 651)
+    pyautogui.click()
+    print("Pop-up clicado")
 
 time.sleep(10)
