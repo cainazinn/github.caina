@@ -197,7 +197,11 @@ time.sleep(5)
 # ===================================================================================
 
 
-print("A pasta 2026 não existe, criando pasta...")    
+print("A pasta 2026 não existe, criando pasta...")  
+
+WebDriverWait(navegador, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[1]/a")))
+
+time.sleep(2)
 
 # Procura o botão de criar novo até encontrá-lo
 criar_novo = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[1]/a")
@@ -227,7 +231,7 @@ nomear_nova_pasta = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/
 print("Caixa de nomear nova pasta encontrada")
 
 # Preenche a caixa de nomear nova pasta, assim que é encontrada, com o nome especificado (2026)
-nomear_nova_pasta.send_keys("2026")
+nomear_nova_pasta.send_keys(f"{ano_atual + 1}")
 print("Pasta nomeada")
 
 # Espera 2 segundos
@@ -245,7 +249,7 @@ print("Nova pasta salva")
 WebDriverWait(navegador, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[2]/div[1]/div[3]/div[2]/div/span/dms-grid-text-cell/div/span[1]/a")))
 
 # Espera 3 segundos
-time.sleep(3)
+time.sleep(10)
 
 # Procura a pasta 2025 e a acessa
 pasta_2025 = navegador.find_element(By.XPATH, "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[2]/div[1]/div[3]/div[2]/div/span/dms-grid-text-cell/div/span[1]/a")
@@ -379,69 +383,121 @@ WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.XPATH, "/h
 
 time.sleep(2)
 
-# Procura a aixa de procurar empresa na área de copiar para até encontrar
+# Procura a caixa de procurar empresa na área de copiar para até encontrar
 caixa_pesquisarEmpresa = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div/dms-clients-combobox/div/div[2]/div[1]/input")
 
+time.sleep(2)
+
+caixa_pesquisarEmpresa.click()
+print("Caixa selecionada")
+
+time.sleep(2)
+
+pyautogui.press("down")
+print("Tecla 'seta para baixo' clicada")
+
+time.sleep(2)
+
+pyautogui.press("enter")
+print("Empresa selecionada na área de 'copiar para'")
+
+# span_pastas_empresa = navegador.find_elements(By.XPATH, "//ul[@class='item-group ng-scope ng-isolate-scope']/li/span[@class='item-label ng-binding']")
+
+# pasta_pessoal = False
+
+
+# for span in span_pastas_empresa:
+#     texto = span.text
+#     if texto == "Pessoal":
+#         print(texto)
+#         pasta_pessoal = True
+#         local = span
+#         break
+
+#     else:
+#         continue
+
+# if pasta_pessoal:
+#     actionChains.double_click(local).perform()   
+#     print("Setor pessoal acessado")
+
+pasta_pessoal = WebDriverWait(navegador, 20).until(EC.element_to_be_clickable((By.XPATH, "//ul[contains(@class,'item-group')]//span[@class='item-label ng-binding' and text()='Pessoal']")))
+
+navegador.execute_script("arguments[0].scrollIntoView(true);", pasta_pessoal)
+print("Setor pessoal encontrado")
+pasta_pessoal.click()
+
+time.sleep(2)
+
+confirm_copy = navegador.find_element(By.XPATH, "//button[contains(text(), 'Copiar')]")
+
+time.sleep(2)
+
+confirm_copy.click()
+print("Pasta copiada")
+
+
+
 # Seleciona todo o texto da caixa
-caixa_pesquisarEmpresa.send_keys(Keys.CONTROL, "a")
+# caixa_pesquisarEmpresa.send_keys(Keys.CONTROL, "a")
 
-time.sleep(2)
+# time.sleep(2)
 
-# Apaga todo o texto selecionado
-caixa_pesquisarEmpresa.send_keys(Keys.DELETE)
+# # Apaga todo o texto selecionado
+# caixa_pesquisarEmpresa.send_keys(Keys.DELETE)
 
-time.sleep(2)
+# time.sleep(2)
 
-# Escreve o nome da empresa desejada
-caixa_pesquisarEmpresa.send_keys("2WV CONSTRUCOES E REFORMAS LTDA ") # A alterar
+# # Escreve o nome da empresa desejada
+# caixa_pesquisarEmpresa.send_keys("2WV CONSTRUCOES E REFORMAS LTDA ") # A alterar
 
-time.sleep(2)
+# time.sleep(2)
 
-# Confirma a pesquisa para que a área da empresa apareça
-caixa_pesquisarEmpresa.send_keys(Keys.ENTER)
+# # Confirma a pesquisa para que a área da empresa apareça
+# caixa_pesquisarEmpresa.send_keys(Keys.ENTER)
 
-time.sleep(2)
+# time.sleep(2)
 
-pastasEmpresa = navegador.find_elements(By.CLASS_NAME, "item")
+# pastasEmpresa = navegador.find_elements(By.CLASS_NAME, "item")
 
-pessoal = False 
+# pessoal = False 
 
-for pasta in pastasEmpresa:
-    if pasta.text == "Pessoal":
-        print(pasta.text)
-        local = pasta
-        pessoal = True
-        break
+# for pasta in pastasEmpresa:
+#     if pasta.text == "Pessoal":
+#         print(pasta.text)
+#         local = pasta
+#         pessoal = True
+#         break
 
-    else:
-        continue
+#     else:
+#         continue
 
-if pessoal:
-    actionChains.double_click(local).perform()
-
-
-time.sleep(2)
+# if pessoal:
+#     actionChains.double_click(local).perform()
 
 
-confirm_copiar = navegador.find_element(By.XPATH, "//button[contains(text(), 'Copiar')]")
-confirm_copiar.click()
-print("Pasta copiada na outra empresa")
-
-time.sleep(2)
-
-try:
-    WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "bento-icon-close-x")))
-
-    fechar_popUp_alerta_existe = True
-
-except TimeoutException:
-    fechar_popUp_alerta_existe = False
+# time.sleep(2)
 
 
-if fechar_popUp_alerta_existe:
+# confirm_copiar = navegador.find_element(By.XPATH, "//button[contains(text(), 'Copiar')]")
+# confirm_copiar.click()
+# print("Pasta copiada na outra empresa")
 
-    pyautogui.moveTo(914, 651)
-    pyautogui.click()
-    print("Pop-up clicado")
+# time.sleep(2)
+
+# try:
+#     WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "bento-icon-close-x")))
+
+#     fechar_popUp_alerta_existe = True
+
+# except TimeoutException:
+#     fechar_popUp_alerta_existe = False
+
+
+# if fechar_popUp_alerta_existe:
+
+#     pyautogui.moveTo(914, 651)
+#     pyautogui.click()
+#     print("Pop-up clicado")
 
 time.sleep(10)
