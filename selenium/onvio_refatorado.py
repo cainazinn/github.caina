@@ -9,7 +9,6 @@ import time
 ano_atual = datetime.now().year
 print(ano_atual)
 
-
                             # | ---------> Funções auxiliares <--------- |
 
 def esperar_click(navegador, xpath, tempo = 10):
@@ -24,7 +23,6 @@ def clicar(navegador, xpath):
 def digitar(navegador, xpath, texto):
     esperar_presenca(navegador, xpath)
     navegador.find_element(By.XPATH, xpath).send_keys(texto)
-
 
 
                             # | ---------> Função: Login na Onvio <--------- |
@@ -154,12 +152,12 @@ def criar_pasta_seNãoExistir(navegador, ano_atual):
         # Tenta encontrar a pasta 2026
         xpath_pasta2026 = f"//a[contains(text(), '{ano_atual + 1}')]"
 
-        esperar_presenca(navegador, xpath_pasta2026)
+        esperar_presenca(navegador, xpath_pasta2026, 5)
 
         # Se encontrar diz que a pasta já existe 
         print(f"Pasta {ano_atual + 1} já existe!")
 
-        time.sleep(2)
+        
         return
     
     # Se não encontrar cria uma nova pasta    
@@ -167,12 +165,83 @@ def criar_pasta_seNãoExistir(navegador, ano_atual):
     except:
         print(f"Pasta {ano_atual + 1} não encontrada, criando...")
 
-        xpath_criarNovo = "//a[contains(text(), 'Novo')]"
+        time.sleep(2)
+
+        xpath_criarNovo = "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[1]/a"
         clicar(navegador, xpath_criarNovo)
+        print("Criando nova pasta")
 
         time.sleep(2)
 
+        xpath_novoPasta = "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[1]/ul/li[1]/a"
+        clicar(navegador, xpath_novoPasta)
 
+        xpath_nomearPasta = "/html/body/div[1]/div/div/div/div[1]/form/div[1]/input"
+        esperar_presenca(navegador, xpath_nomearPasta)
+
+        time.sleep(2)
+
+        digitar(navegador, xpath_nomearPasta, f"{ano_atual + 1}")
+        print(f"Pasta nomeada com o ano {ano_atual + 1}")
+
+        time.sleep(2)
+
+        xpath_salvar = "/html/body/div[1]/div/div/div/div[2]/button[1]"
+        clicar(navegador, xpath_salvar)
+        print(f"Pasta {ano_atual + 1} criada")
+
+        time.sleep(2)
+
+        xpath_pasta2025 = "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[2]/div[1]/div[3]/div[2]/div/span/dms-grid-text-cell/div/span[1]/a"
+        xpath_gerenc = "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[4]/a"
+        xpath_copy = "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/dms-document-grid-toolbar/dms-toolbar/div/ul/li[4]/ul/li[4]/a"
+        xpath_setaVoltar_copiarPara = "/html/body/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/div/span[1]"
+        xpath_selec2026_copiarPara = "/html/body/div[1]/div/div/div/div[2]/div/div[1]/div/div/div/ul/li[3]"
+        xpath_confirmCopy = "/html/body/div[1]/div/div/div/div[3]/button[1]"
+
+        esperar_presenca(navegador, xpath_pasta2025)
+
+        time.sleep(2)
+
+        clicar(navegador, xpath_pasta2025)
+        print("Pasta 2025 acessada")
+
+        xpath_selecSubpastas = "/html/body/bm-main/main/div[1]/ui-view/div[2]/div/div[2]/div/section/div/documents-detail-pane/div/div/dms-document-grid/div/div/div[14]/div[7]/div/div/div/div/i"
+        esperar_presenca(navegador, xpath_selecSubpastas)
+
+        time.sleep(2)
+
+        clicar(navegador, xpath_selecSubpastas)
+        print("Subpastas selecionadas")
+        time.sleep(2)
+
+        clicar(navegador, xpath_gerenc)
+        print("Gerenciando subpastas...")
+
+        time.sleep(2)
+
+        clicar(navegador, xpath_copy)
+        print("Copiando subpastas")
+
+        time.sleep(2)
+
+        esperar_presenca(navegador, xpath_setaVoltar_copiarPara)
+
+        time.sleep(2)
+
+        clicar(navegador, xpath_setaVoltar_copiarPara)
+
+        time.sleep(2)
+
+        esperar_presenca(navegador, xpath_selec2026_copiarPara)
+
+        time.sleep(2)
+
+        clicar(navegador, xpath_selec2026_copiarPara)
+
+        time.sleep(2)
+
+        clicar(navegador, xpath_confirmCopy)
 
                             # | ---------> Fluxo Principal <---------
 
@@ -183,7 +252,8 @@ acessar_documentos(navegador)       # Chama a função que acessa a área de doc
 mudar_aba(navegador, 1)     # Chama a função que muda a aba para continuar executando o código 
 selecionar_empresa(navegador, "Empresa exemplo simples nacional")       # Chama a função que procura a empresa e a acessa
 acessar_setorPessoal(navegador)     # Chama a função que acessa o setor pessoal da empresa atualmente acessada
-criar_pasta_seNãoExistir(navegador, ano_atual + 1)
+criar_pasta_seNãoExistir(navegador, ano_atual)
+acessar_setorPessoal(navegador)
 
 
 
